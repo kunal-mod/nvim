@@ -12,9 +12,26 @@ Plug 'Raimondi/delimitMate'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'
+Plug 'morhetz/gruvbox'
 
 
 call plug#end()
+
+
+inoremap jj <Esc>
+"colorscheme slate
+colorscheme gruvbox
+
+let mapleader = ","
+set tabstop=4
+set softtabstop=4
+set nowrap
+set noswapfile
+set nobackup
+set expandtab
+set shiftwidth=4
+
+
 
 filetype plugin on
 
@@ -28,6 +45,7 @@ filetype plugin on
 "  autocmd VimEnter * :Vexplore
 "augroup END
 
+let g:NERDTreeWinSize=30
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
 let g:NERDTreeDirArrowExpandable = '▸'
@@ -48,11 +66,11 @@ nnoremap <C-H> <C-W><C-H>
 
 set splitright
 set splitbelow
-
+set showcmd
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
-"Enable folding with the spacebar
+"Enable folding with the za
 
 set encoding=utf-8
 
@@ -77,11 +95,12 @@ set autoindent " enable auto indentation of lines
 set cindent
 nnoremap // :noh<return>
 set smartindent " allow vim to best-effort guess the indentation
+nnoremap <Leader>q :q<cr>
 
-nnoremap <space> a<return><Esc>bea<return>
 map <C-n> :NERDTreeToggle<CR>
 
 nnoremap \ :vnew <bar> :te<return>
+
 
 " run code
 augroup compileandrun
