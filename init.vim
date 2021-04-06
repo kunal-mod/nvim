@@ -1,5 +1,8 @@
 call plug#begin('~/local/share/nvim/plugged')
 
+Plug 'danilo-augusto/vim-afterglow'
+Plug 'vim-syntastic/syntastic'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -35,6 +38,7 @@ set exrc    " this allow us to have project specific vimrc as this make vim look
 
 
 "colorscheme gruvbox
+colorscheme afterglow
 
 "inoremap <silent> <C-Return> <CR><Esc>O
 
@@ -53,10 +57,10 @@ nnoremap <leader>hd :resize -5<CR>
 inoremap jj <Esc>
 nnoremap \ :split <bar> :resize 15 <bar> :te<CR> i
 
-
-
-
-
+"syntastic remap
+nnoremap <leader>sc :lclose<CR>
+nnoremap <leader>sn :lnext<CR>
+nnoremap <leader>sp :lprevious<CR>
 
 
 
@@ -132,3 +136,21 @@ vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 
 
+"   Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
+
+
+augroup compileandrun
+    autocmd!
+    autocmd filetype cpp nnoremap <F6> :w <bar> :!g++ -std=c++14 % <CR>
+    autocmd filetype cpp nnoremap <F7> :split <bar> :resize 15 <bar> :te "./a.out" <CR> i
+augroup END
