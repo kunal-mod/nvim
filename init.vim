@@ -1,3 +1,6 @@
+" Author: Kunal Mod
+
+
 call plug#begin('~/local/share/nvim/plugged')
 
 Plug 'danilo-augusto/vim-afterglow'
